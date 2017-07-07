@@ -1,1 +1,1 @@
-# Streaming-Kafka-messages-to-MySQL-and-analysis
+# Streaming Kafka messages to MySQL and data preparation for machine learning
