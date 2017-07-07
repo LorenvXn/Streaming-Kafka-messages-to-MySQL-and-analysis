@@ -1,8 +1,12 @@
 #!/usr/bin/perl -w
 
+################################
 # this script will create database &table for Kafka messages to be received
+# Based on your keyboard input, a KafkaProducer.pl script will be created
+############################
 # usage: perl db_and_flumeconf.pl <mysql user> <mysql passwd>
 # example: /db_and_flumeconf.pl root r4tzy\!\!\*
+##############
 
 use File::Path;
 use File::chdir;
@@ -118,6 +122,51 @@ agent.sinks.$jdbcSink.sql=load data local infile \'$file2send\' into table $kafk
 close $FH;
 
 print "\n";
+
+print "Create Kafka Producer Perl script under current directory " . "\n";
+
+open my $FH, ">" , "./KafkaProducer.pl";
+print $FH "
+
+\#!usr/bin/perl
+
+use strict;
+use scalar;
+
+    use Scalar::Util qw(
+        blessed
+    );
+    use Try::Tiny;
+
+    use Kafka::Connection;
+    use Kafka::Producer;
+
+        my \$command = `echo -ne '\\n\\n'`;
+
+  my ( \$connection, \$producer );
+
+        \$connection = Kafka::Connection->new( host => 'localhost' );
+
+        \$producer = Kafka::Producer->new( Connection => \$connection );
+
+
+        # Sending a series of messages
+        my \$response = \$producer->send(
+
+            '$topic_name',
+
+            0,                 \ # partition
+
+            [                   \# send command as message -forces mysql to update with new lines
+                \$command
+            ]
+        );
+undef \$producer;
+\$connection->close;
+undef \$connection;
+";
+close $FH;
+
 
 print "Configuration  Completed..." . "\n";
 
