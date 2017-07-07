@@ -1,9 +1,10 @@
 #!/usr/bin/perl -w
 
-################################
+###############################################################################################################
 # this script will create database &table for Kafka messages to be received
-# Based on your keyboard input, a KafkaProducer.pl script will be created
+# Based on your keyboard input, for more automation, a KafkaProducer.pl script will be created in current dir
 ############################
+##################
 # usage: perl db_and_flumeconf.pl <mysql user> <mysql passwd>
 # example: /db_and_flumeconf.pl root r4tzy\!\!\*
 ##############
