@@ -40,5 +40,46 @@ agent.sinks.jdbcSink.channel =channel1
 agent.sinks.jdbcSink.sqlDialect=MYSQL
 agent.sinks.jdbcSink.driver=com.mysql.jdbc.Driver
 agent.sinks.jdbcSink.sql=load data local infile /var/lib/mysql-files/output.txt' into table kafkanet1 fields terminated by '\t\t' lines terminated by '\n' 
+```
+3) The  KafkaProducer.pl script
+
+
+```
+root@tron:/home/tron/KafkaFlume# more KafkaProducer.pl 
+#!/usr/bin/perl 
+
+     use warnings;
+
+    use Scalar::Util qw(
+        blessed
+    );
+    use Try::Tiny;
+
+    use Kafka::Connection;
+    use Kafka::Producer;
+
+        my $command = `echo -ne '\n\n'`;
+
+     my ( $connection, $producer );
+
+        $connection = Kafka::Connection->new( host => 'localhost' );
+
+        $producer = Kafka::Producer->new( Connection => $connection );
+
+
+        # Sending a series of messages
+        my $response = $producer->send(
+
+            'kafka-mysql',
+
+            0,                  # partition
+
+            [                   # send command as message -forces mysql to update with new lines
+                $command
+            ]
+        );
+undef $producer;
+$connection->close;
+undef $connection; 
 
 ```
