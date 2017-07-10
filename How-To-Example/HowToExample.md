@@ -110,7 +110,7 @@ mysql> SHOW VARIABLES LIKE "secure_file_priv";
 mysql> \! ls /var/lib/mysql-files/
 mysql> 
 mysql>
-mysql>select distinct * from KafkaDB.kafkanet1 into outfile '/var/lib/mysql-files/packetz.csv' fields terminated by ',' lines terminated by '\n';
+mysql>select distinct * from KafkaDBA1.kafkanet1 into outfile '/var/lib/mysql-files/packetz.csv' fields terminated by ',' lines terminated by '\n';
 mysql> \! head -5 /var/lib/mysql-files/packetz.csv
 2017-05-27 19:21:18,IP, 172.261.0.12 ,28061, 216.58.207.78 ,443,tcp,46
 2017-05-27 19:21:18,IP, 216.58.207.78 ,443, 172.261.0.12 ,28061,tcp,0
@@ -120,7 +120,7 @@ mysql> \! head -5 /var/lib/mysql-files/packetz.csv
 
 ```
 
-//the perl way...
+//the perl way... the important snip! 
 
 ```
  use DBI;
