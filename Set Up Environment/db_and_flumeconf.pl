@@ -6,16 +6,17 @@
 #a KafkaProducer.pl script will be created in current dir on localhost
 ############################
 ##################
-# usage: perl db_and_flumeconf.pl <mysql user> <mysql passwd>
-# example: ./db_and_flumeconf.pl root r4tzy\!\!\*
+# usage: perl db_and_flumeconf.pl ;
+# you will have to add <mysql user>  and <mysql passwd>
+#  or, if you don't want passwd in a script: https://perlmaven.com/open-and-read-from-files 
 ##############
 
 use File::Path;
 use File::chdir;
 use DBI;
 
-$user=shift;
-$mysqlPasswd=shift;
+$mysqluser=" " ; #add here mysql user
+$mysqlpasswd=" "; #add here mysql password
 
 
 print "###########################" . "\n";
@@ -68,7 +69,7 @@ $kafkadb = <STDIN>;
 chomp($kafkadb);
 
 use DBI;
-my $dbh=DBI->connect("dbi:mysql:", '$user', '$passwd');
+my $dbh=DBI->connect("dbi:mysql:", '$mysqluser', '$mysqlpasswd');
 my $sth=$dbh->prepare("create database $kafkadb");
 $sth->execute();
 
@@ -76,7 +77,7 @@ $sth->execute();
 print "Create Table for Kafka Messages..." . "\n";
 
 
- $dbh = DBI->connect('dbi:mysql:$kafkadb','$user','$passwd')
+ $dbh = DBI->connect('dbi:mysql:$kafkadb','$mysqluser','$mysqlpasswd')
    or die "Connection Error: $DBI::errstr\n";
 
 print "insert new name of kafka table: ";
