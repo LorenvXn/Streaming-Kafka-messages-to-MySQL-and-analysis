@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
-###############################################################################################################
-# this script will create database &table for Kafka messages to be received
+##################################################################################################################
+# this script will update ~./bashrc && create database &table for Kafka messages to be received
 # Based on your keyboard input, for more automation, a KafkaProducer.pl script will be created in current dir
 ############################
 ##################
