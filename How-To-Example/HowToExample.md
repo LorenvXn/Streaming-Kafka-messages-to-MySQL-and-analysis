@@ -49,7 +49,7 @@ agent sinks username mysql: root
 
 agent sinks password mysql: <some passwd here>
 
-write path & file to send:  /var/lib/mysql-files/output.txt
+write path & file to send:  /var/lib/mysql-files/final_output.txt
 
 ###########################################################
 #Create Kafka Producer Perl script under current directory 
