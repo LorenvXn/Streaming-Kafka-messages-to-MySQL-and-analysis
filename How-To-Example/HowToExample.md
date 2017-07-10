@@ -65,8 +65,9 @@ write path & file to send:  /var/lib/mysql-files/output.txt
 
 6) Run script Set Up Environment/KafkaProducer.pl (which has been created at point 3), at every 2 seconds:
 
+```
 watch -2 ./KafkaProducer.pl
-
+``` 
 
 7) Check if tablespace is populated! (be warned - there'd be duplicates!)
 
