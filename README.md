@@ -1,5 +1,5 @@
 # Streaming Kafka messages to MySQL and data preparation for machine learning
-(...what a title - just checking how to make CSV with the help of Big Data &MySQL and Perl, l3l!, )
+(...what a title - just checking how to make CSV with the help of Big Data, MySQL &Perl, l3l!, )
 
 ```
 |-----------------|		|--------------|
