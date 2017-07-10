@@ -39,7 +39,7 @@ For obtaining the text file that should be sent in mysql (...and from there conv
 
 
 
-Kafka, Flume, Zookeeper and Java already installed - make sure that Zookeeper is running before continuing. 
+Kafka, Flume, Zookeeper and Java should be already installed - make sure that Zookeeper is running before continuing. 
 Make sure Jook is installed as well (you can find it in jars folder)
 
 Run script db_and_flumeconf.pl, for: 
@@ -49,5 +49,6 @@ c) create Kafka Producer Perl script
 
 More details at How-To-Example folder:
 https://github.com/Satanette/Streaming-Kafka-messages-to-MySQL-and-analysis/tree/master/How-To-Example 
+
 
 Memo to self: Why not making this easier? I don't care - it seemed like phun!  ...it can be made bigger &better, tho! 
