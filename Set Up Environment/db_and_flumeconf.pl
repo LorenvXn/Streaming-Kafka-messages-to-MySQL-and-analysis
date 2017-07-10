@@ -13,6 +13,52 @@ use File::Path;
 use File::chdir;
 use DBI;
 
+
+print "###########################" . "\n";
+print "#  ./bashrc configuration  " . "\n";
+print "###########################" . "\n";
+
+print "\n\n";
+
+print "Insert FLUME_HOME:" ;
+$flumehome = <STDIN>;
+chomp($flumehome);
+
+print "insert KAFKA_HOME: ";
+$kafkahome=<STDIN>;
+chomp($kafkahome);
+
+print "insert JAVA_HOME :" ;
+$javahome = <STDIN>;
+chomp($javahome);
+
+
+open my $FH, ">>" , "/root/.bashrc";
+print $FH "
+
+\##adding path for flume, kafka and java conf in .bashrc
+
+export FLUME_HOME=$flumehome
+export FLUME_CONF_DIR=$flumehome/conf
+export FLUME_CLASSPATH=\$FLUME_CONF_DIR
+export PATH=\$PATH:\$FLUME_HOME/bin
+export CLASSPATH=
+export KAFKA_HOME=$kafkahome
+export JAVA_HOME=$javahome
+
+" . "\n";
+
+close $FH;
+
+system("source /root/.bashrc");
+
+print "\n";
+
+print "###########################################" . "\n";
+print "#  Kafka DB & table configuration          " . "\n";
+print "###########################################" . "\n";
+
+
 $mysqlUSER=ARGV[0];
 $mysqlPasswd=ARGV[1];
 
@@ -48,47 +94,62 @@ $dbh->do("CREATE TABLE $kafkaTable (Datez timestamp, IP VARCHAR(30), SourceIP va
 
 print "Succesfully Created Kafka Messages Database and Table " . "\n";
 
-print "Open Flume conf directory: ";
-my $directory = <STDIN> ;
-chomp($directory);
+print "##############################################" . "\n";
+print "# Create new conf file for flume & appenders         " . "\n";
+print "##############################################" . "\n";
 
 
 print "create conf file" ;
 $confFile = <STDIN>;
 chomp($confFile);
 
+print "\n";
+
 
 print "my kafka topic: " ;
 $topic_name = <STDIN>;
 chomp($topic_name);
 
+print "\n";
+
 print "my kafka source: " ;
 $kafkasource = <STDIN>;
 chomp($kafkasource);
 
+print "\n";
 
 print "my Kafka channel: " ;
 $kafkachannel = <STDIN>;
 chomp($kafkachannel);
 
+print "\n";
+
 print "agent sinks username mysql: ";
 $username = <STDIN>;
 chomp($username);
+
+print "\n";
 
 print "agent sinks password mysql: ";
 $passwd = <STDIN>;
 chomp($passwd);
 
+print "\n";
+
 print "jdbc :" ;
 $jdbcSink = <STDIN>;
 chomp($jdbcSink);
+
+print "\n";
 
 
 print "write path & file to send: ";
 $file2send = <STDIN>;
 chomp($file2send);
 
-open my $FH, ">" , "$directory/$confFile";
+print "\n";
+
+open my $FH, ">" , "$flumehome/conf/$confFile";
 print $FH "
 agent.sources=$kafkasource
 agent.channels=$kafkachannel
@@ -124,7 +185,9 @@ close $FH;
 
 print "\n";
 
-print "Create Kafka Producer Perl script under current directory " . "\n";
+print "###########################################################" . "\n";
+print "#Create Kafka Producer Perl script under current directory " . "\n";
+print "###########################################################" . \n";
 
 open my $FH, ">" , "./KafkaProducer.pl";
 print $FH "
