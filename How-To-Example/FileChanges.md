@@ -74,7 +74,7 @@ root@tron:/home/tron/KafkaFlume# more KafkaProducer.pl
 
             0,                  # partition
 
-            [                   # send command as message -forces mysql to update with new lines
+            [                   # send command as message -forces mysql table to update with new lines
                 $command
             ]
         );
