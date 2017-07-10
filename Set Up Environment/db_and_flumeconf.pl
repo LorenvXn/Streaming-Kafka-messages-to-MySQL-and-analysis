@@ -190,12 +190,9 @@ print "#Create Kafka Producer Perl script under current directory " . "\n";
 print "###########################################################" . \n";
 
 open my $FH, ">" , "./KafkaProducer.pl";
-print $FH "
+print $FH "\#\!/usr/bin/perl 
 
-\#!usr/bin/perl
-
-use strict;
-use scalar;
+     use warnings;
 
     use Scalar::Util qw(
         blessed
@@ -207,7 +204,7 @@ use scalar;
 
         my \$command = `echo -ne '\\n\\n'`;
 
-  my ( \$connection, \$producer );
+     my ( \$connection, \$producer );
 
         \$connection = Kafka::Connection->new( host => 'localhost' );
 
