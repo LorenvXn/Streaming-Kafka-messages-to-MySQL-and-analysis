@@ -39,7 +39,7 @@ agent.sinks.jdbcSink.batchSize = 10
 agent.sinks.jdbcSink.channel =channel1
 agent.sinks.jdbcSink.sqlDialect=MYSQL
 agent.sinks.jdbcSink.driver=com.mysql.jdbc.Driver
-agent.sinks.jdbcSink.sql=load data local infile /var/lib/mysql-files/output.txt' into table kafkanet1 fields terminated by '\t\t' lines terminated by '\n' 
+agent.sinks.jdbcSink.sql=load data local infile /var/lib/mysql-files/final_output.txt' into table kafkanet1 fields terminated by '\t\t' lines terminated by '\n' 
 ```
 3) The  KafkaProducer.pl script
 
