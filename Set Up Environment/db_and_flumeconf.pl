@@ -222,3 +222,9 @@ print "###########################################################" . "\n";
 print "#               Configuration completed                    " . "\n";
 print "###########################################################" . "\n";
 
+
+#######################################################################################################
+#
+# Script based on article:
+# http://www.toadworld.com/platforms/oracle/w/wiki/11647.streaming-kafka-messages-to-mysql-database
+#
