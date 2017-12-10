@@ -140,4 +140,4 @@ open(FH, "> /home/tron/overtherainbow.csv");
 ```
 
 All files configuration changes can be seen here: 
-https://github.com/Satanette/Streaming-Kafka-messages-to-MySQL-and-analysis/blob/master/How-To-Example/FileChanges.md 
+https://github.com/LorenvXn/Streaming-Kafka-messages-to-MySQL-and-analysis/blob/master/How-To-Example/FileChanges.md 
